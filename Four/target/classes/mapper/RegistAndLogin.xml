@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.RegistAndLogin">
+	<select id="findRegistName" parameterType="String" resultType="Integer">
+		select uid from user where username LIKE '${value}'
+	</select>
+	<insert id="regist" parameterType="pojo.User">
+	<selectKey keyProperty="uid" resultType="int" order="AFTER">
+	select LAST_INSERT_ID()
+	</selectKey>
+		insert into
+		user(username,password,name,email,phone,address)value(#{username},#{password},#{name},#{email},#{phone},#{address})
+	</insert>
+    <select id="checkPassword" parameterType="String" resultType="String">
+      select password from user where username like '${value}' 
+    </select>
+    <select id="findNameByUid" parameterType="Integer" resultType="String">
+    select name from user where uid=#{uid}
+    </select>
+</mapper>

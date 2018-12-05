@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="administrator.mapper.AdminCategroyMapper">
+<select id="findAllCategroy" resultType="pojo.Categroy">
+select * from categroy
+</select>
+<insert id="addCategroy" parameterType="pojo.Categroy">
+insert into categroy(cname)value(#{cname})
+</insert>
+<delete id="deleteCategroy" parameterType="Integer">
+DELETE categroy,categroysecond FROM categroy LEFT JOIN categroysecond ON categroy.cid=categroysecond.cid WHERE categroy.cid=#{cid}
+</delete>
+<update id="editCategroy" parameterType="pojo.Categroy">
+update categroy set cname=#{cname} where cid=#{cid}
+</update>
+</mapper>

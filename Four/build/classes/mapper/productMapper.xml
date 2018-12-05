@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.productMapper">
+	<select id="findHotProduct" resultType="pojo.Product">
+		select pid,image from product
+		where is_hot=1 limit 10
+	</select>
+	<select id="findNewProduct" resultType="pojo.Product">
+		select pid,image from product order by pdate desc limit 10
+	</select>
+	<select id="findProductDetail" parameterType="int" resultType="pojo.Product">
+		select * from product where pid=#{id}
+	</select>
+</mapper>

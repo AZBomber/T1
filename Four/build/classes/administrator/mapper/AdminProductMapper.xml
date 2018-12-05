@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="administrator.mapper.AdminProductMapper">
+	<select id="adminfindAllProduct" resultType="pojo.Product">
+		select * from product
+	</select>
+	<delete id="deleteProduct" parameterType="Integer">
+		delete from product
+		where pid=#{pid}
+	</delete>
+	<insert id="addProduct" parameterType="pojo.Product">
+		insert into product(pname,market_price,shop_price,image,pdesc,is_hot,pdate,csid)
+		value(#{pname},#{market_price},#{shop_price},#{image},#{pdesc},#{is_hot},#{pdate},#{csid})
+	</insert>
+	<update id="editProduct" parameterType="pojo.Product">
+		update product set pname=#{pname},market_price=#{market_price},shop_price=#{shop_price},
+		pdesc=#{pdesc},is_hot=#{is_hot},pdate=#{pdate},csid=#{csid},image=#{image} where pid=#{pid}
+	</update>
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="administrator.mapper.AdminCategroySecondMapper">
+	<select id="findAllCategroySeconds" resultType="pojo.CategroySecond">
+		select * from categroysecond
+	</select>
+	<insert id="addCategroySecond" parameterType="pojo.CategroySecond">
+		insert into categroysecond(csname,cid) value (#{csname},#{cid})
+	</insert>
+	<delete id="deleteOne" parameterType="Integer">
+		delete categroysecond from categroysecond where categroysecond.csid=#{csid}
+	</delete>
+	<update id="editone" parameterType="pojo.CategroySecond">
+		update categroysecond set csname=#{csname} where csid=#{csid}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.CategroySecondMapper">
+	<select id="findCategroySecondbycid" resultType="pojo.CategroyAndSecond">
+		select
+		categroy.*,categroysecond.csid,categroysecond.csname from
+		categroy,categroysecond where categroysecond.cid=categroy.cid
+	</select>
+	<select id="findProductListByCid" 
+		resultType="pojo.Product">
+		select categroysecond.csid,product.* from
+		categroysecond,product where categroysecond.csid=#{0} and product.csid=categroysecond.csid limit #{1},#{2}
+	</select>
+	<select id="findcountbycid" resultType="int" parameterType="int">
+		select count(*)  from
+		categroysecond,product where categroysecond.csid=#{cid} and product.csid=categroysecond.csid 
+	</select>
+	<select id="findcountbycsid" parameterType="int" resultType="int">
+	select count(*) from product where csid=#{csid}
+	</select>
+	<select id="findProductListBycsid" resultType="pojo.Product">
+	select * from product where csid=#{0} limit #{1},#{2}
+	</select>
+</mapper>
